@@ -1,0 +1,30 @@
+<!-- appResaltar: directiva propia. [class.tarjeta--activa]: class binding -->
+<article class="tarjeta" appResaltar [class.tarjeta--activa]="seleccionado()">
+<div class="tarjeta__cabecera">
+<span class="tarjeta__avatar">{{ producto().nombre.charAt(0) }}</span>
+<!-- ngClass: elige la clase de Bootstrap según el estado del stock -->
+<span class="badge"
+[ngClass]="stockBajo() ? 'text-bg-danger' : 'text-bg-success'">
+{{ producto().estadoStock }}
+</span>
+</div>
+<h2 class="h6 mt-3 mb-1">{{ producto().nombre }}</h2>
+<!-- Pipe currency: formatea el precio en soles (S/) -->
+<p class="tarjeta__precio">
+{{ producto().precio | currency: 'PEN' : 'S/ ' : '1.2-2' }}
+</p>
+<p class="small text-secondary mb-1">Stock: {{ producto().stock }} unidades</p>
+<!-- [attr.*]: attribute binding. [style.width.%]: style binding con unidad -->
+<div class="progress" role="progressbar"
+[attr.aria-valuenow]="producto().stock" aria-valuemin="0">
+<div class="progress-bar"
+[class.bg-danger]="stockBajo()"
+[style.width.%]="porcentajeStock()"></div>
+</div>
+
+<!-- matButton="filled": botón con estilo Material Design -->
+<button type="button" matButton="filled" class="mt-3 w-100"
+[disabled]="seleccionado()" (click)="alSeleccionar()">
+{{ seleccionado() ? 'Seleccionado' : 'Ver detalle' }}
+</button>
+</article>

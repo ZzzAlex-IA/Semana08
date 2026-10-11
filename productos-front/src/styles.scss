@@ -1,0 +1,6 @@
+/* Estilos globales: se aplican a toda la aplicación */
+@use 'styles/variables' as *;
+body {
+background-color: $color-fondo;
+color: $color-texto;
+}

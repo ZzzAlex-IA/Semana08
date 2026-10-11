@@ -1,0 +1,14 @@
+// Variables y mixins SASS compartidos por los componentes
+$color-texto: #1c1c1c;
+$color-encabezado: #212529;
+$color-acento: #f0ad00;
+$color-superficie: #ffffff;
+$color-fondo: #f4f5f7;
+$radio: 0.75rem;
+$sombra: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+// Mixin reutilizable para cualquier superficie tipo tarjeta
+@mixin superficie {
+background-color: $color-superficie;
+border-radius: $radio;
+box-shadow: $sombra;
+}

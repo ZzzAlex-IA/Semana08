@@ -1,0 +1,14 @@
+@use '../../../styles/variables' as *;
+.encabezado {
+background-color: $color-encabezado;
+color: #fff;
+padding: 1rem 0;
+border-bottom: 4px solid $color-acento;
+// Anidamiento SASS: equivale a .encabezado .encabezado__kicker
+&__kicker {
+color: $color-acento;
+font-size: 0.75rem;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+}
+}

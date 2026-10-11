@@ -1,0 +1,25 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Nombre</th><th>Precio</th>
+        <th>Stock</th><th>Estado</th>
+        <th>Acciones</th> <!-- <-- NUEVA COLUMNA -->
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of productos(); track p.id) {
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>S/ {{ p.precio }}</td>
+          <td>{{ p.stock }}</td>
+          <td>{{ p.estadoStock }}</td>
+          <td>
+            <a [routerLink]="['/productos/editar', p.id]">Editar</a>
+            &nbsp; 
+            <button type="button" (click)="eliminar(p.id)">Eliminar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>

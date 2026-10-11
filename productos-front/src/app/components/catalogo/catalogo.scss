@@ -1,0 +1,31 @@
+// Flexbox: buscador y contador en una fila
+.barra {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+// CSS Grid: distribución general (catálogo | detalle)
+.contenido {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1.5rem;
+align-items: start;
+&--con-detalle {
+grid-template-columns: 1fr 340px;
+}
+}
+// CSS Grid: tarjetas que se acomodan solas según el ancho disponible
+.grilla {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 1rem;
+&__vacio {
+grid-column: 1 / -1; // ocupa todas las columnas
+}
+}
+// Responsive: en pantallas pequeñas el detalle baja debajo del catálogo
+@media (max-width: 768px) {
+.contenido--con-detalle {
+grid-template-columns: 1fr;
+}
+}

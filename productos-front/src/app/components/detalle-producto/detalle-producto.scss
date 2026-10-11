@@ -1,0 +1,9 @@
+@use '../../../styles/variables' as *;
+.detalle {
+@include superficie;
+padding: 1.25rem;
+border-top: 4px solid $color-acento;
+// sticky: el panel acompaña al usuario al desplazarse
+position: sticky;
+top: 1rem;
+}

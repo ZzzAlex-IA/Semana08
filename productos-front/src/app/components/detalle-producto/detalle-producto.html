@@ -1,0 +1,45 @@
+<aside class="detalle">
+<div class="d-flex justify-content-between align-items-start">
+<h2 class="h5 mb-3">{{ producto().nombre }}</h2>
+<!-- (click): emite el evento cerrar hacia el componente padre -->
+<button type="button" class="btn-close" aria-label="Cerrar"
+(click)="cerrar.emit()"></button>
+</div>
+<table class="table table-sm mb-3">
+<tbody>
+<tr>
+<th scope="row">Id</th>
+<td>{{ producto().id }}</td>
+</tr>
+<tr>
+<th scope="row">Precio</th>
+<td class="text-nowrap">
+{{ producto().precio | currency: 'PEN' : 'S/ ' : '1.2-2' }}
+</td>
+</tr>
+<tr>
+<th scope="row">Stock</th>
+<td>{{ producto().stock }} unidades</td>
+</tr>
+<tr>
+<th scope="row">Valor en inventario</th>
+<td class="text-nowrap">
+{{ valorInventario() | currency: 'PEN' : 'S/ ' : '1.2-2' }}
+</td>
+</tr>
+</tbody>
+</table>
+<!-- @switch: muestra un mensaje distinto según el estado del stock -->
+@switch (producto().estadoStock) {
+@case ('INSUFICIENTE') {
+<div class="alert alert-danger mb-0">
+Stock bajo: se recomienda reponer este producto.
+</div>
+}
+@case ('OK') {
+<div class="alert alert-success mb-0">
+Stock suficiente para atender pedidos.
+</div>
+}
+}
+</aside>
